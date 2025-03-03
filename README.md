@@ -62,4 +62,4 @@ The application includes error handling to manage common JWT-related issues:
 - **If the `Authorization` header is missing** ➜ the server will respond with a **`400`** status code.
 - **If the JWT token is expired** ➜ the server will respond with a **`401`** status code and a message indicating the token has expired.
 - **If the JWT token has an invalid audience** ➜ the server will respond with a **`401`** status code and a message indicating the audience is invalid.
-- **If the JWT token is invalid** ➜ the server will respond with a **`401`** status code and a message indicating the token is invalid.
+- **If the JWT token is invalid** ➜ the server will respond with a **`401`** status code and a message indicating the token is invalid
