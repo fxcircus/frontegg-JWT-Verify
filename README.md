@@ -49,10 +49,7 @@ Send a POST request to the root endpoint `/` with an `Authorization` header cont
 POST /
 Authorization: Bearer <your_jwt_token>
 ```
-
-### Example using `curl`
-
-You can use the following `curl` command to test the application:
+You can use the following `curl` command to test the application for example:
 
 ```bash
 curl -X POST http://0.0.0.0:8000/ -H "Authorization: Bearer <your_jwt_token>"
