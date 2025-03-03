@@ -1,13 +1,11 @@
 # JWT Verification Service
 
-This application implements the [guidelines provided by Frontegg](https://developers.frontegg.com/guides/integrations/protect-backend-api/validate-jwt#validate-jwt-token-without-frontegg-middleware) for validating JWT tokens without using Frontegg's middleware.
+This application implements the [guidelines provided in Frontegg's documentation  for validating JWT tokens](https://developers.frontegg.com/guides/integrations/protect-backend-api/validate-jwt#validate-jwt-token-without-frontegg-middleware), without using Frontegg's middleware:
 
-- **JWT Decoding**: The application decodes the JWT using the `jwt.decode` method from the `pyjwt` library, specifying the public key and the RS256 algorithm.
-- **Public Key Usage**:  verify the public key from your Frontegg account.
-- **Audience Verification**: The application verifies the `aud` claim in the JWT.
-- **[Error Handling](#error-handling)**
+- **Public Key Usage**: Verify the public key from your Frontegg account to make sure the token was issued by Frontegg.
+- **Audience Verification**: Verify the `aud` claim in the JWT, to make sure the token is intended for this application.
+- **JWT Expiration Check**: Check that the token is not expired and therefore still valid.
 
-By following these steps, the application effectively implements the JWT validation process as described in the [Frontegg documentation](https://developers.frontegg.com/guides/integrations/protect-backend-api/validate-jwt#validate-jwt-token-without-frontegg-middleware), ensuring secure backend API protection without relying on Frontegg middleware.
 
 ## Setup
 
@@ -59,11 +57,9 @@ Replace `<your_jwt_token>` with your actual JWT token.
 
 ## Error Handling
 
-The application includes robust error handling to manage common JWT-related issues:
+The application includes error handling to manage common JWT-related issues:
 
-- If the `Authorization` header is missing, the server will respond with a `400` status code.
-- If the JWT token is expired, the server will respond with a `401` status code and a message indicating the token has expired.
-- If the JWT token has an invalid audience, the server will respond with a `401` status code and a message indicating the audience is invalid.
-- If the JWT token is invalid, the server will respond with a `401` status code and a message indicating the token is invalid.
-
-These error handling mechanisms are part of the implementation details that ensure the application adheres to the Frontegg guidelines for secure backend API protection.
+- **If the `Authorization` header is missing** ➜ the server will respond with a **`400`** status code.
+- **If the JWT token is expired** ➜ the server will respond with a **`401`** status code and a message indicating the token has expired.
+- **If the JWT token has an invalid audience** ➜ the server will respond with a **`401`** status code and a message indicating the audience is invalid.
+- **If the JWT token is invalid** ➜ the server will respond with a **`401`** status code and a message indicating the token is invalid.
